@@ -1,0 +1,32 @@
+@model CodeNest.Models.LoginViewModel
+
+<h2>Logowanie użytkownika</h2>
+
+<form asp-action="Login" method="post">
+    <div class="form-group">
+        <label asp-for="Role">Logujesz się jako:</label>
+        <select asp-for="Role" class="form-control">
+            <option value="User">User</option>
+            <option value="Teacher">Teacher</option>
+        </select>
+        <span asp-validation-for="Role" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Identifier"></label>
+        <input asp-for="Identifier" class="form-control" />
+        <span asp-validation-for="Identifier" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password"></label>
+        <input asp-for="Password" class="form-control" type="password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Zaloguj</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

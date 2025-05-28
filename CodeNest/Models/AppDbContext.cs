@@ -9,9 +9,10 @@ public class AppDbContext : DbContext
         
     }
 
-    public DbSet<Student> Students { get; set; }
-    public DbSet<Parent> Parents { get; set; }
+    public DbSet<User> Users { get; set; }
     public DbSet<Teacher> Teachers { get; set; }
     public DbSet<Reservation> Reservations { get; set; }
     public DbSet<Course> Courses { get; set; }
+
+   
 }

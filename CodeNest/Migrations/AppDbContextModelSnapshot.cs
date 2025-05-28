@@ -49,42 +49,6 @@ namespace CodeNest.Migrations
                     b.ToTable("Courses");
                 });
 
-            modelBuilder.Entity("CodeNest.Models.Parent", b =>
-                {
-                    b.Property<int>("ParentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(35)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Phone")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ParentId");
-
-                    b.ToTable("Parents");
-                });
-
             modelBuilder.Entity("CodeNest.Models.Reservation", b =>
                 {
                     b.Property<int>("ReservationId")
@@ -94,42 +58,16 @@ namespace CodeNest.Migrations
                     b.Property<int>("CourseId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("ParentId")
+                    b.Property<int>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("ReservationId");
 
                     b.HasIndex("CourseId");
 
-                    b.HasIndex("ParentId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Reservations");
-                });
-
-            modelBuilder.Entity("CodeNest.Models.Student", b =>
-                {
-                    b.Property<int>("StudentId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ParentId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("StudentId");
-
-                    b.HasIndex("ParentId");
-
-                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("CodeNest.Models.Teacher", b =>
@@ -163,24 +101,70 @@ namespace CodeNest.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
                     b.HasKey("TeacherId");
 
                     b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("CourseStudent", b =>
+            modelBuilder.Entity("CodeNest.Models.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(35)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("CourseUser", b =>
                 {
                     b.Property<int>("CoursesCourseId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("StudentsStudentId")
+                    b.Property<int>("StudentsUserId")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("CoursesCourseId", "StudentsStudentId");
+                    b.HasKey("CoursesCourseId", "StudentsUserId");
 
-                    b.HasIndex("StudentsStudentId");
+                    b.HasIndex("StudentsUserId");
 
-                    b.ToTable("CourseStudent");
+                    b.ToTable("CourseUser");
                 });
 
             modelBuilder.Entity("CodeNest.Models.Course", b =>
@@ -202,29 +186,18 @@ namespace CodeNest.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CodeNest.Models.Parent", "Parent")
+                    b.HasOne("CodeNest.Models.User", "User")
                         .WithMany("Reservations")
-                        .HasForeignKey("ParentId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Course");
 
-                    b.Navigation("Parent");
+                    b.Navigation("User");
                 });
 
-            modelBuilder.Entity("CodeNest.Models.Student", b =>
-                {
-                    b.HasOne("CodeNest.Models.Parent", "Parent")
-                        .WithMany("Children")
-                        .HasForeignKey("ParentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Parent");
-                });
-
-            modelBuilder.Entity("CourseStudent", b =>
+            modelBuilder.Entity("CourseUser", b =>
                 {
                     b.HasOne("CodeNest.Models.Course", null)
                         .WithMany()
@@ -232,9 +205,9 @@ namespace CodeNest.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CodeNest.Models.Student", null)
+                    b.HasOne("CodeNest.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("StudentsStudentId")
+                        .HasForeignKey("StudentsUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -244,16 +217,14 @@ namespace CodeNest.Migrations
                     b.Navigation("Reservations");
                 });
 
-            modelBuilder.Entity("CodeNest.Models.Parent", b =>
-                {
-                    b.Navigation("Children");
-
-                    b.Navigation("Reservations");
-                });
-
             modelBuilder.Entity("CodeNest.Models.Teacher", b =>
                 {
                     b.Navigation("Courses");
+                });
+
+            modelBuilder.Entity("CodeNest.Models.User", b =>
+                {
+                    b.Navigation("Reservations");
                 });
 #pragma warning restore 612, 618
         }

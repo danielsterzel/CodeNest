@@ -27,6 +27,52 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                     </ul>
+                    @inject IHttpContextAccessor HttpContextAccessor
+
+                    @{
+                        var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole");
+                        var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId");
+                        string username = null;
+
+                        if (role == "User" && userId != null)
+                        {
+                            var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
+                            var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId);
+                            username = user?.UserName;
+                        }
+                        else if (role == "Teacher" && userId != null)
+                        {
+                            var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
+                            var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId);
+                            username = teacher?.UserName;
+                        }
+                    }
+                    <ul class="navbar-nav ms-auto">
+                        @if (string.IsNullOrEmpty(username))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">Zaloguj się</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text dark" asp-controller="Account" asp-action="RegisterUser">Rejestracja</a> 
+                            </li>
+                            
+                            @* <li class="nav-item"> *@
+                            @*     <a class="nav-link text dark" asp-controller="Account" asp-action="RegisterUser">Rejestracja</a>  *@
+                            @* </li> *@
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <span class="nav-link text-dark">Hello, @username!</span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="Account" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                    </ul>
+
+
                 </div>
             </div>
         </nav>
