@@ -1,4 +1,5 @@
 using CodeNest.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +29,42 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+
+
+
+static void CreateAdmin(AppDbContext context)
+{
+    if (!context.Users.Any(u => u.Role == "Admin"))
+    {
+        var hasher = new PasswordHasher<User>();
+        
+        var admin = new User()
+        {
+            UserName = "Admin",
+            FirstName = "admin",
+            LastName = "admin",
+            Email = "admin@gmail.com",
+            Phone = "111111111",
+            Role = "Admin",
+            Password = ""
+        };
+
+        admin.Password = hasher.HashPassword(admin, "qwerty13");
+        context.Users.Add(admin);
+        context.SaveChanges();
+    }
+    
+    
+}
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    CreateAdmin(dbContext);
+}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

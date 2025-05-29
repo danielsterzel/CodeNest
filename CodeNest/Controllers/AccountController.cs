@@ -27,7 +27,8 @@ public class AccountController : Controller
             LastName = model.LastName,
             Email = model.Email,
             Phone = model.Phone,
-            Password = model.Password
+            Password = model.Password,
+            Role = "user"
         };
         var hasher = new PasswordHasher<User>();
         user.Password = hasher.HashPassword(user, model.Password);
@@ -56,11 +57,12 @@ public class AccountController : Controller
             LastName = model.LastName,
             Email = model.Email,
             Phone = model.Phone,
-            Password = model.Password
+            Password = model.Password,
+            Role = "Teacher"
         };
         var hasher = new PasswordHasher<Teacher>();
         teacher.Password = hasher.HashPassword(teacher, model.Password);
-        _context.Add(teacher);
+        _context.Teachers.Add(teacher);
         _context.SaveChanges();
         return RedirectToAction("Login");
     } 
@@ -88,6 +90,7 @@ public class AccountController : Controller
                 var result = hasher.VerifyHashedPassword(user, user.Password, model.Password);
                 if (result == PasswordVerificationResult.Success)
                 {
+
                     HttpContext.Session.SetString("UserRole", "User");
                     HttpContext.Session.SetString("UserId", user.UserId.ToString());
                     return RedirectToAction("Dashboard", "User");
@@ -109,6 +112,21 @@ public class AccountController : Controller
                     HttpContext.Session.SetString("UserRole", "Teacher");
                     HttpContext.Session.SetString("UserId", teacher.TeacherId.ToString());
                     return RedirectToAction("Dashboard", "Teacher");
+                }
+            }
+        }else if (model.Role == "Admin")
+        {
+            var admin = _context.Users.FirstOrDefault(a =>
+                (a.Email == model.Identifier || a.UserName == model.Identifier) && a.Role == "Admin");
+            if (admin != null)
+            {
+                var hasher = new PasswordHasher<User>();
+                var result = hasher.VerifyHashedPassword(admin, admin.Password, model.Password);
+                if (result == PasswordVerificationResult.Success)
+                {
+                    HttpContext.Session.SetString("UserRole", "Admin");
+                    HttpContext.Session.SetString("UserId", admin.UserId.ToString());
+                    return RedirectToAction("AdminDashboard", "Admin");
                 }
             }
         }

@@ -9,35 +9,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae99df20-6fd8-44cd-8855-69b8a6988839" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest.sln.DotSettings.user" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Attributes/RoleAuthorizeAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Controllers/AccountController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Controllers/TeacherController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Controllers/UserController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Migrations/20250526200018_UpdatedUserRelations.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Migrations/20250526200018_UpdatedUserRelations.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Account/Login.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterTeacher.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterUser.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/User/Dashboard.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Admin/AdminDashboard.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Teacher/Dashboard.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/CodeNest.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/CodeNest.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Controllers/AccountController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/Course.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/LoginViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/LoginViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Parent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/RegisterViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/RegisterViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Reservation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/Reservation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Student.cs" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/Teacher.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Account/Login.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterTeacher.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterTeacher.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/database1.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-shm" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-wal" beforeDir="false" />
     </list>
@@ -120,7 +104,7 @@
       <updated>1748184845521</updated>
       <workItem from="1748184846648" duration="9849000" />
       <workItem from="1748206700928" duration="18508000" />
-      <workItem from="1748414954949" duration="5253000" />
+      <workItem from="1748414954949" duration="23112000" />
     </task>
     <servers />
   </component>

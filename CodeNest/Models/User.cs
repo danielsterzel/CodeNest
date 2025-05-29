@@ -13,5 +13,6 @@ public class User
     [Required] [StringLength(50)] public required string Email { get; set; }
     public  List<Course> Courses { get; set; } = new List<Course>();
     public  List<Reservation> Reservations { get; set; } = new List<Reservation>();
+    [Required] [StringLength(10)] public required string Role { get; set; }
 
 }

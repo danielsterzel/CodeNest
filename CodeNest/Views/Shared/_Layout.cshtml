@@ -11,7 +11,7 @@
     {
         var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); // this returns an object of type we  specify
         // Context is current Http context
-        // RequestServices is a service container for resolbing dependencies
+        // RequestServices is a service container for resolving dependencies
         // We get the service that is of type AppDbContext
         var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId);
         username = user?.UserName;
@@ -22,6 +22,17 @@
         var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId);
         username = teacher?.UserName;
     }
+    
+    /*
+     * TO DO: NEED TO MAKE IN THE TOP RIGHT CORNER THAT THE ADMIN IS LOGGED IN!
+     */
+    
+    
+    // else if (role == "Admin" && userId != null)
+    // {
+    //     var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
+    //     var admin = 
+    // }
 }
 
 <!DOCTYPE html>
