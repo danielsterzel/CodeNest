@@ -1,4 +1,31 @@
-﻿<!DOCTYPE html>
+﻿
+@*  Logic to check whether the user is logged in or not *@
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole");
+    var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId");
+    string username = null;
+
+    if (role == "User" && userId != null)
+    {
+        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); // this returns an object of type we  specify
+        // Context is current Http context
+        // RequestServices is a service container for resolbing dependencies
+        // We get the service that is of type AppDbContext
+        var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId);
+        username = user?.UserName;
+    }
+    else if (role == "Teacher" && userId != null)
+    {
+        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
+        var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId);
+        username = teacher?.UserName;
+    }
+}
+
+<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -20,33 +47,50 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            @{
+                                if (!string.IsNullOrEmpty(username)) //user is logged in check the logic at the top for reference
+                                {
+                                    if (role == "User")
+                                    {
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Strona główna</a>
+                                    }
+                                    else if (role == "Teacher")
+                                    {
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Dashboard">Strona główna</a>
+                                    }
+                                }
+                                else //user not logged in
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                                }
+                            }
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Polityka Prywatności</a>
                         </li>
                     </ul>
-                    @inject IHttpContextAccessor HttpContextAccessor
+                    @* @inject IHttpContextAccessor HttpContextAccessor *@
 
-                    @{
-                        var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole");
-                        var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId");
-                        string username = null;
-
-                        if (role == "User" && userId != null)
-                        {
-                            var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
-                            var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId);
-                            username = user?.UserName;
-                        }
-                        else if (role == "Teacher" && userId != null)
-                        {
-                            var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
-                            var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId);
-                            username = teacher?.UserName;
-                        }
-                    }
+                    @* @{ *@
+                    @*     var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole"); *@
+                    @*     var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId"); *@
+                    @*     string username = null; *@
+                    @* *@
+                    @*     if (role == "User" && userId != null) *@
+                    @*     { *@
+                    @*         var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); *@
+                    @*         var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId); *@
+                    @*         username = user?.UserName; *@
+                    @*     } *@
+                    @*     else if (role == "Teacher" && userId != null) *@
+                    @*     { *@
+                    @*         var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); *@
+                    @*         var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId); *@
+                    @*         username = teacher?.UserName; *@
+                    @*     } *@
+                    @* } *@
                     <ul class="navbar-nav ms-auto">
                         @if (string.IsNullOrEmpty(username))
                         {
