@@ -54,6 +54,8 @@ public class AdminController(AppDbContext context) : Controller
             }
 
             _context.SaveChanges();
+            
+            TempData["SuccessMessage"] = "Course created successfully!";
             return RedirectToAction("CreateCourse");
         }
         ViewBag.Teachers = _context.Teachers

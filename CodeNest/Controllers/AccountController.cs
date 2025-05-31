@@ -57,7 +57,7 @@ public class AccountController : Controller
             LastName = model.LastName,
             Email = model.Email,
             Phone = model.Phone,
-            Password = model.Password,
+            Password = model.Password, 
             Role = "Teacher"
         };
         var hasher = new PasswordHasher<Teacher>();

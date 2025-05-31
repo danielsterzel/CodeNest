@@ -1,0 +1,13 @@
+@model List<CourseScheduleViewModel>
+
+<h2> Kalendarz zajęć</h2>
+@foreach (var courseScheduler in Model)
+{
+    <h4> @courseScheduler.Course.Name  </h4>
+    <ul>
+        @foreach (var date in courseScheduler.LessonDates)
+        {
+            <li>@date.ToString("dddd, dd.MM.yyyy")</li>
+        }
+    </ul>
+}

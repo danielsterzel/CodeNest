@@ -1,0 +1,28 @@
+@model List<Course>
+
+<h2>Moje kursy</h2>
+<dl>
+    @foreach (var course in Model)
+    {
+        <dt>@course.Name</dt>
+        <dd>- Przedmiot: @course.Subject. <br/>
+            - Identyfikator kursu: @course.CourseId <br/>
+            - Data rozpoczęcia: @course.StartDate.ToString("dd.MM.yyyy"), <br/>
+            - Data zakończenia: @course.EndDate.ToString("dd.MM.yyyy") <br/>
+            - Lista studentów: 
+            @foreach (var student in course.Students)
+            {
+                <p>  - @student</p> <br/>
+            }
+            - Lista rezerwacji:
+            @foreach (var reserv in course.Reservations)
+            {
+                <p>  - Uczeń: @reserv.User  <br/>
+                     - Identyfikator ucznia: @reserv.UserId <br/>
+                     - Identyfikator rezerwacji: @reserv.ReservationId <br/>
+                </p>
+            }
+
+        </dd>
+    }
+</dl>
