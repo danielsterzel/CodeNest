@@ -12,6 +12,6 @@ public class Course
     [Required] public DateTime EndDate { get; set; }
     [Required] [StringLength(50)] public required string Subject { get; set; }
     public  int TeacherId { get; set; }
-    public  Teacher Teacher { get; set; }
+    public  Teacher? Teacher { get; set; }
 
 }

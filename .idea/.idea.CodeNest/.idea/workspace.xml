@@ -9,21 +9,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae99df20-6fd8-44cd-8855-69b8a6988839" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Admin/AdminDashboard.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CodeNest/Views/Teacher/Dashboard.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CodeNest/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/CodeNest.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/CodeNest.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Controllers/AccountController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Controllers/AccountController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Migrations/AppDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Migrations/AppDbContextModelSnapshot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Teacher.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/Teacher.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Account/Login.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Account/Login.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterTeacher.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Account/RegisterTeacher.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Controllers/AdminController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Controllers/TeacherController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Controllers/TeacherController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Models/Course.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Models/Course.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Admin/AdminDashboard.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Admin/AdminDashboard.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CodeNest/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-wal" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Views/Teacher/Dashboard.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/Teacher/Dashboard.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/Views/User/Dashboard.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/Views/User/Dashboard.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/database1.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/database1.db-shm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CodeNest/database1.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/CodeNest/database1.db-wal" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +102,7 @@
       <workItem from="1748184846648" duration="9849000" />
       <workItem from="1748206700928" duration="18508000" />
       <workItem from="1748414954949" duration="23112000" />
+      <workItem from="1748557642572" duration="9689000" />
     </task>
     <servers />
   </component>

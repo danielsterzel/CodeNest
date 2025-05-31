@@ -5,34 +5,30 @@
 @{
     var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole");
     var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId");
-    string username = null;
+    string username = "";
 
     if (role == "User" && userId != null)
     {
-        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); // this returns an object of type we  specify
+        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext))!; // this returns an object of type we  specify
         // Context is current Http context
         // RequestServices is a service container for resolving dependencies
         // We get the service that is of type AppDbContext
         var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId);
-        username = user?.UserName;
+        username = user?.UserName?? "";
     }
     else if (role == "Teacher" && userId != null)
     {
-        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
+        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext))!;
         var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId);
-        username = teacher?.UserName;
+        username = teacher?.UserName?? "";
     }
     
-    /*
-     * TO DO: NEED TO MAKE IN THE TOP RIGHT CORNER THAT THE ADMIN IS LOGGED IN!
-     */
-    
-    
-    // else if (role == "Admin" && userId != null)
-    // {
-    //     var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext));
-    //     var admin = 
-    // }
+    else if (role == "Admin" && userId != null)
+    {
+        var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext))!;
+        var admin = db.Users.FirstOrDefault(u => u.Role == "Admin");
+        username = admin?.UserName?? "Admin";
+    }
 }
 
 <!DOCTYPE html>
@@ -61,20 +57,46 @@
                         
                         <li class="nav-item">
                             @{
-                                if (!string.IsNullOrEmpty(username)) //user is logged in check the logic at the top for reference
+                                switch (role)
                                 {
-                                    if (role == "User")
-                                    {
+                                    case "User":
                                         <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Dashboard">Strona główna</a>
-                                    }
-                                    else if (role == "Teacher")
-                                    {
+                                        break;
+                                    case "Teacher":
                                         <a class="nav-link text-dark" asp-area="" asp-controller="Teacher" asp-action="Dashboard">Strona główna</a>
-                                    }
+                                        break;
+                                    case "Admin":
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AdminDashboard">Strona główna</a>
+                                        break;
+                                    default:
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                                        break;
                                 }
-                                else //user not logged in
+                            }
+                        </li>
+                        @* requires implementation   WHAT THE HELL DO I HAVE TO IMPLEMENT HERE?????? I FORGOT IN 2 HOURS*@
+                        <li class="nav-item">
+                            @{
+                                if (!string.IsNullOrEmpty(username))
                                 {
-                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a>
+                                    switch (role)
+                                    {
+                                        case "User":
+                                        {
+                                            //...
+                                            break;
+                                        }
+                                        case "Teacher":
+                                            
+                                            //...
+                                            break;
+                                        case "Admin":
+                                            //...
+                                            break;
+                                        default:
+                                            //...
+                                            break;
+                                    }
                                 }
                             }
                         </li>
@@ -82,26 +104,8 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Polityka Prywatności</a>
                         </li>
                     </ul>
-                    @* @inject IHttpContextAccessor HttpContextAccessor *@
-
-                    @* @{ *@
-                    @*     var role = HttpContextAccessor.HttpContext.Session.GetString("UserRole"); *@
-                    @*     var userId = HttpContextAccessor.HttpContext.Session.GetString("UserId"); *@
-                    @*     string username = null; *@
-                    @* *@
-                    @*     if (role == "User" && userId != null) *@
-                    @*     { *@
-                    @*         var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); *@
-                    @*         var user = db.Users.FirstOrDefault(u => u.UserId.ToString() == userId); *@
-                    @*         username = user?.UserName; *@
-                    @*     } *@
-                    @*     else if (role == "Teacher" && userId != null) *@
-                    @*     { *@
-                    @*         var db = (AppDbContext)Context.RequestServices.GetService(typeof(AppDbContext)); *@
-                    @*         var teacher = db.Teachers.FirstOrDefault(t => t.TeacherId.ToString() == userId); *@
-                    @*         username = teacher?.UserName; *@
-                    @*     } *@
-                    @* } *@
+                    
+                    @* implement for admin *@
                     <ul class="navbar-nav ms-auto">
                         @if (string.IsNullOrEmpty(username))
                         {

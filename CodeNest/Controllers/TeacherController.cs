@@ -8,6 +8,10 @@ public class TeacherController : Controller
 {
     // GET
     [HttpGet]
-    public IActionResult Dashboard() => View();
-    
+    public IActionResult Dashboard()
+    {
+        if (HttpContext.Session.GetString("UserRole") != "Teacher") return RedirectToAction("Login", "Account");
+        return View();
+    }
+
 }

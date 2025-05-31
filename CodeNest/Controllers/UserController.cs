@@ -7,5 +7,9 @@ namespace CodeNest.Controllers;
 public class UserController : Controller
 {
     // GET
-    public IActionResult Dashboard() => View();
+    public IActionResult Dashboard()
+    {
+        if (HttpContext.Session.GetString("UserRole") != "User") return RedirectToAction("Login", "Account");
+        return View();
+    }
 }
