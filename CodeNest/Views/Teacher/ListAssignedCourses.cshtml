@@ -12,12 +12,12 @@
             - Lista studentów: 
             @foreach (var student in course.Students)
             {
-                <p>  - @student</p> <br/>
+                <p>  - @student.FirstName , @student.LastName, @student.UserId</p> <br/>
             }
             - Lista rezerwacji:
             @foreach (var reserv in course.Reservations)
             {
-                <p>  - Uczeń: @reserv.User  <br/>
+                <p>  - Uczeń: @reserv.User.FirstName @reserv.User.LastName  <br/>
                      - Identyfikator ucznia: @reserv.UserId <br/>
                      - Identyfikator rezerwacji: @reserv.ReservationId <br/>
                 </p>

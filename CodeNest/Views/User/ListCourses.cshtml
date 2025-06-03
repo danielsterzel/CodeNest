@@ -1,1 +1,56 @@
-<h2> NOT IMPLEMENTED!!!</h2>
+@model List<Course>
+@{
+    var selectedSubject = ViewBag.SelectedSubject as string;
+    var subjects = new List<string> { "English", "Programming", "Math", "Physics" };
+}
+@if (TempData["Message"] != null)
+{
+    <p style="color: green;">@TempData["Message"]</p>
+}
+
+
+<h2>Find a Course</h2>
+
+<form method="get" asp-action="ListCourses">
+    <label>Select Subject:</label>
+    <select name="subject">
+        @foreach (var subj in subjects)
+        {
+            <option value="@subj" selected="@(selectedSubject == subj ? "selected" : null)">@subj</option>
+        }
+    </select>
+    <button type="submit">Search</button>
+</form>
+
+@if (Model.Any())
+{
+    <h3>Available Courses</h3>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Start</th>
+            <th>End</th>
+            <th>Subject</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.Name</td>
+                <td>@course.StartDate.ToShortDateString()</td>
+                <td>@course.EndDate.ToShortDateString()</td>
+                <td>@course.Subject</td>
+                <td>
+                    <form method="post" asp-action="SignUp">
+                        <input type="hidden" name="courseId" value="@course.CourseId" />
+                        <button type="submit">Sign Up</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else if (!string.IsNullOrEmpty(selectedSubject))
+{
+    <p>Nie znaleziono kursów dla tego przedmiotu "@selectedSubject"</p>
+}

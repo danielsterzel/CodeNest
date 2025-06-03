@@ -30,10 +30,10 @@ public class AdminController(AppDbContext context) : Controller
             .ToList();
         ViewBag.Subjects = new List<SelectListItem>
         {
-            new SelectListItem { Value = "Math", Text = "Math" },
-            new SelectListItem { Value = "Programming", Text = "Programming" },
-            new SelectListItem { Value = "Physics", Text = "Physics" },
-            new SelectListItem { Value = "English", Text = "English" }
+            new SelectListItem { Value = "Math", Text = "Matematyka" },
+            new SelectListItem { Value = "Programming", Text = "Programowanie" },
+            new SelectListItem { Value = "Physics", Text = "Fizyka" },
+            new SelectListItem { Value = "English", Text = "Angielski" }
         };
 
         ViewBag.Teachers = teachers;
@@ -55,7 +55,7 @@ public class AdminController(AppDbContext context) : Controller
 
             _context.SaveChanges();
             
-            TempData["SuccessMessage"] = "Course created successfully!";
+            TempData["SuccessMessage"] = "Kurs stworzony pomyślnie!";
             return RedirectToAction("CreateCourse");
         }
         ViewBag.Teachers = _context.Teachers
@@ -67,10 +67,10 @@ public class AdminController(AppDbContext context) : Controller
             .ToList();
         ViewBag.Subjects = new List<SelectListItem>
         {
-            new SelectListItem { Value = "Math", Text = "Math" },
-            new SelectListItem { Value = "Programming", Text = "Programming" },
-            new SelectListItem { Value = "Physics", Text = "Physics" },
-            new SelectListItem { Value = "English", Text = "English" }
+            new SelectListItem { Value = "Math", Text = "Matematyka" },
+            new SelectListItem { Value = "Programming", Text = "Programowanie" },
+            new SelectListItem { Value = "Physics", Text = "Fizyka" },
+            new SelectListItem { Value = "English", Text = "Angielski" }
         };
 
 

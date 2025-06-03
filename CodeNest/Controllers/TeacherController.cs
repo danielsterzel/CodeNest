@@ -21,6 +21,10 @@ public class TeacherController(AppDbContext context) : Controller
             // we use include because EF normally won't INCLUDE the courses list. This is eager loading meaning we explicitly load
             // related data.
             .Include(t => t.Courses)
+            .ThenInclude(c => c.Students)
+            .Include(t => t.Courses)
+            .ThenInclude(c => c.Reservations)
+            .ThenInclude(r => r.User)
             .FirstOrDefault(t => t.TeacherId == teacherId)!;
         return teacher;
     }
@@ -41,16 +45,6 @@ public class TeacherController(AppDbContext context) : Controller
     [HttpGet]
     public IActionResult ListAssignedCourses()
     {
-        // var id = HttpContext.Session.GetString("UserId");
-        // int teacherId = int.Parse(id!);
-        // var teacher = _context.Teachers
-        //         // we use include because EF normally won't INCLUDE the courses list. This is eager loading meaning we explicitly load
-        //         // related data.
-        //     .Include(t => t.Courses)
-        //     .FirstOrDefault(t => t.TeacherId == teacherId);
-        //
-        // if (teacher == null) return NotFound();
-        //
         var teacher = GetTeacher();
         var courses = teacher.Courses;
         return View(courses);
