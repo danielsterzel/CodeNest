@@ -2,85 +2,85 @@
 
 CodeNest to aplikacja internetowa wspomagająca zarządzanie kursami edukacyjnymi. System umożliwia studentom zapisy na zajęcia, a nauczycielom – przeglądanie przypisanych kursów i list uczestników. Aplikacja została stworzona w oparciu o ASP.NET Core MVC oraz Entity Framework Core.
 ## Funkcjonalności
-    **Role użytkowników**:
+ **Role użytkowników**:
 
-        Studenci i Nauczyciele z odpowiednim poziomem dostępu (autoryzacja ról).
+  - Studenci i Nauczyciele z odpowiednim poziomem dostępu (autoryzacja ról).
 
-    Zarządzanie kursami:
+ Zarządzanie kursami:
 
-        Studenci mogą wyszukiwać kursy wg przedmiotu (np. Matematyka, Fizyka) i zapisywać się na nie.
+  - Studenci mogą wyszukiwać kursy wg przedmiotu (np. Matematyka, Fizyka) i zapisywać się na nie.
 
-        Nauczyciele mogą przeglądać przypisane kursy oraz listy studentów.
+  - Nauczyciele mogą przeglądać przypisane kursy oraz listy studentów.
 
-    Kalendarz zajęć:
+ Kalendarz zajęć:
 
-        Automatyczne generowanie terminów zajęć w odstępach tygodniowych.
+  - Automatyczne generowanie terminów zajęć w odstępach tygodniowych.
 
-        Widok kalendarza dla studentów i nauczycieli.
+  - Widok kalendarza dla studentów i nauczycieli.
 
-    Rezerwacje:
+ Rezerwacje:
 
-        Obsługa rezerwacji miejsc na kursach z automatycznym powiązaniem użytkownika i kursu.
+  - Obsługa rezerwacji miejsc na kursach z automatycznym powiązaniem użytkownika i kursu.
 
-    Bezpieczeństwo:
+ Bezpieczeństwo:
 
-        Logowanie oparte na sesji oraz filtrowanie dostępu według roli.
+  - Logowanie oparte na sesji oraz filtrowanie dostępu według roli.
 
 ## Technologie
 
-    Backend:
+ Backend:
 
-        ASP.NET Core MVC
+  - ASP.NET Core MVC
 
-        Entity Framework Core
+  - Entity Framework Core
 
-    Frontend:
+ Frontend:
 
-        Razor Views (cshtml)
+  - Razor Views (cshtml)
 
-        HTML, CSS
+  - HTML, CSS
 
-    Baza danych:
+ Baza danych:
 
-        SQL Server (via EF Core)
+ - SQL Server (via EF Core)
 
 Uruchomienie aplikacji
 
-    Sklonuj repozytorium:
-
+ 1. Sklonuj repozytorium:
+```bash
 git clone https://github.com/danielsterzel/CodeNest.git
-
-Przejdź do katalogu projektu:
+```
+2. Przejdź do katalogu projektu:
 
 ``` bash
 cd CodeNest
 ```
 
-Przywróć zależności:
+3. Przywróć zależności:
 
 ``` bash
 dotnet restore
 
 ```
 
-Zastosuj migracje i zaktualizuj bazę danych:
+4. Zastosuj migracje i zaktualizuj bazę danych:
 
 
 ``` bash
 dotnet ef database update
 ```
 
-Uruchom aplikację:
+5. Uruchom aplikację:
 
 ``` bash
 dotnet run
 
 ```
 
-Wejdź na stronę w przeglądarce:
-
+6. Wejdź na stronę w przeglądarce:
+```bash
 https://localhost:5001
-
+```
 lub adres wyświetlony w konsoli.
 
 ## Autorzy:
